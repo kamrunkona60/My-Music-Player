@@ -77,7 +77,7 @@ fun MusicApp(activity: MainActivity) {
     LaunchedEffect(Unit) { if (granted) songs = loadSongs(activity) else launcher.launch(permissionName()) }
     LaunchedEffect(Unit) { while (true) { playing = activity.isPlaying(); title = activity.title(); artist = activity.artist(); kotlinx.coroutines.delay(600) } }
     MaterialTheme(colorScheme = if (dark) darkColorScheme(primary = Color(0xFFB8F36B), background = Color(0xFF10120E), surface = Color(0xFF1B1E18)) else lightColorScheme(primary = Color(0xFF456A16))) {
-        Scaffold(topBar = { TopAppBar(title = { Column { Text("MY MUSIC", fontWeight = FontWeight.Black); Text("YOUR SOUND. YOUR SPACE.", style = MaterialTheme.typography.labelSmall) } }, actions = { IconButton(onClick = { dark = !dark }) { Icon(if (dark) Icons.Default.LightMode else Icons.Default.DarkMode, "Theme") } }) }, bottomBar = {
+        Scaffold(topBar = { TopAppBar(title = { Column { Text("LemonTunes", fontWeight = FontWeight.Black); Text("YOUR SOUND. YOUR SPACE.", style = MaterialTheme.typography.labelSmall) } }, actions = { IconButton(onClick = { dark = !dark }) { Icon(if (dark) Icons.Default.LightMode else Icons.Default.DarkMode, "Theme") } }) }, bottomBar = {
             Column(Modifier.background(MaterialTheme.colorScheme.surface)) {
                 Row(Modifier.fillMaxWidth().clickable { tab = 2 }.padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Default.Album, null, modifier = Modifier.size(38.dp)); Column(Modifier.weight(1f).padding(horizontal = 8.dp)) { Text(title, maxLines = 1, overflow = TextOverflow.Ellipsis, fontWeight = FontWeight.Bold); Text(artist, maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.bodySmall) }
